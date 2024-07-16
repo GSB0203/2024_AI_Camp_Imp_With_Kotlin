@@ -29,6 +29,10 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
+    //MQTT
+    implementation("org.eclipse.paho:org.eclipse.paho.client.mqtt3:1.2.5")
+    implementation("org.springframework.integration:spring-integration-mqtt:6.3.1")
+
 }
 
 kotlin {
