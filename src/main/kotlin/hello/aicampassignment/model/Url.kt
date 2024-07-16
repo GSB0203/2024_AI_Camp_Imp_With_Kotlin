@@ -1,6 +1,7 @@
 package hello.aicampassignment.model
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "urls")
@@ -15,5 +16,7 @@ data class Url (
     @Column(nullable = false, unique = true)
     var encodedUrl: String,
 
-    var clickCount: Int = 0
+    var clickCount: Int = 0,
+
+    val createdAfter: LocalDateTime = LocalDateTime.now()
 )

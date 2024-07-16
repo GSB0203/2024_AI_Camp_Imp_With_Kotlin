@@ -3,6 +3,7 @@ package hello.aicampassignment.service
 import hello.aicampassignment.model.Url
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 
 @Service
@@ -35,7 +36,7 @@ class UrlModelService (
         return urlModelRepository.save(url)
     }
 
-//    companion object {
-//        const val BASE_URL =
-//    }
+    fun findByCreatedAtAfter(createdAfter: LocalDateTime): Url?
+        = urlModelRepository.findByCreatedAtAfter(createdAfter)
 }
+
