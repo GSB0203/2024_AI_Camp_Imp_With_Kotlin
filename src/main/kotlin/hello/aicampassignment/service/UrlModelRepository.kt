@@ -7,5 +7,5 @@ import java.time.LocalDateTime
 interface UrlModelRepository : JpaRepository<Url, Long> {
     fun findByEncodedUrl(findByEncodedUrl: String): Url?
 
-    fun findByCreatedAtAfter(createdAfter: LocalDateTime): Url?
+    fun findByCreatedAtAfter(createdAfter: LocalDateTime): List<Url>
 }

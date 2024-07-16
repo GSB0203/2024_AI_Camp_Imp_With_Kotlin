@@ -1,6 +1,7 @@
 package hello.aicampassignment.model
 
 import jakarta.persistence.*
+import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDateTime
 
 @Entity
@@ -18,5 +19,5 @@ data class Url (
 
     var clickCount: Int = 0,
 
-    val createdAfter: LocalDateTime = LocalDateTime.now()
+    val createdAt: LocalDateTime = LocalDateTime.now()
 )

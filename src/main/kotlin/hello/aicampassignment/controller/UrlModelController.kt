@@ -1,21 +1,16 @@
 package hello.aicampassignment.controller
 
-import com.fasterxml.jackson.annotation.Nulls
 import hello.aicampassignment.dto.UrlModelRequest
 import hello.aicampassignment.model.Url
 import hello.aicampassignment.service.UrlModelService
 import jakarta.servlet.http.HttpServletResponse
 import org.slf4j.LoggerFactory
-import org.springframework.cglib.core.Local
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
-import java.time.temporal.ChronoUnit
-import java.util.Date
 
 @RestController
 class UrlModelController(
-    val urlModelService: UrlModelService,
-    private val UrlModelService: UrlModelService,
+    private val urlModelService: UrlModelService,
 ) {
     private val logger = LoggerFactory.getLogger(UrlModelController::class.java)
 
@@ -29,7 +24,7 @@ class UrlModelController(
     fun listMyUrls(
         @RequestParam(required = false) createdAfter: LocalDateTime?,
     ) = urlModelService.findByCreatedAtAfter(
-            createdAfter ?:LocalDateTime.now().minusMinutes(10)
+            createdAfter ?: LocalDateTime.now().minusMinutes(10)
     )
 
     @GetMapping("/api/short-urls/{encodedUrl}")
@@ -38,7 +33,7 @@ class UrlModelController(
         response: HttpServletResponse,
     ) {
         logger.error("Request : $encodedUrl")
-        val url = UrlModelService.findByEncodedUrl("http://localhost:8080/short-url/" + encodedUrl)
+        val url = urlModelService.findByEncodedUrl("http://localhost:8080/short-url/" + encodedUrl)
             ?: throw IllegalStateException("Invelid URL")
 
         response.sendRedirect(url.originalUrl)

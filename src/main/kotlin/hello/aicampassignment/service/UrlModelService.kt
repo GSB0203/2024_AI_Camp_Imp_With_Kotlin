@@ -36,7 +36,7 @@ class UrlModelService (
         return urlModelRepository.save(url)
     }
 
-    fun findByCreatedAtAfter(createdAfter: LocalDateTime): Url?
-        = urlModelRepository.findByCreatedAtAfter(createdAfter)
+    fun findByCreatedAtAfter(createdAfter: LocalDateTime): List<Url> =
+        urlModelRepository.findByCreatedAtAfter(createdAfter)
 }
 
